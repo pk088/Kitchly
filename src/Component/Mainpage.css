@@ -1,0 +1,177 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: #29251f;
+  background:
+    radial-gradient(at 10% 10%, #ffd5b8 0px, transparent 40%),
+    radial-gradient(at 90% 20%, #ffbda5 0px, transparent 35%),
+    radial-gradient(at 50% 90%, #ffe6c9 0px, transparent 40%),
+    linear-gradient(135deg, #fff8f0, #fff0e7);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Main Hero */
+
+.container {
+  min-height: 360px;
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Ambient glow */
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(65px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container::before {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 123, 66, 0.23);
+  top: -130px;
+  left: 8%;
+  animation: ambient 10s ease-in-out infinite alternate;
+}
+
+.container::after {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 176, 112, 0.3);
+  bottom: -130px;
+  right: 8%;
+  animation: ambient 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ambient {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(30px, 35px) scale(1.15);
+  }
+}
+
+/* Glass Search */
+
+.searchbar {
+  width: min(680px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+
+  background: rgba(255, 255, 255, 0.43);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 22px;
+
+  box-shadow:
+    0 15px 45px rgba(111, 65, 38, 0.10),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.searchbar:focus-within {
+  border-color: rgba(255, 112, 62, 0.5);
+  box-shadow:
+    0 20px 55px rgba(255, 111, 59, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.searchbar input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 17px 20px;
+  font-size: 15px;
+  color: #382a22;
+  font-family: inherit;
+}
+
+.searchbar input::placeholder {
+  color: #99877c;
+}
+
+.searchbar button {
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 15px 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ff9659, #ef5837);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(238, 87, 51, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchbar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(238, 87, 51, 0.32);
+}
+
+/* Recipe Section */
+
+.Mealcards-container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 30px 35px 80px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .container {
+    min-height: 280px;
+    padding: 45px 16px;
+  }
+
+  .searchbar {
+    padding: 7px;
+    gap: 5px;
+    border-radius: 17px;
+  }
+
+  .searchbar input {
+    padding: 13px 10px;
+    font-size: 13px;
+  }
+
+  .searchbar button {
+    padding: 13px 18px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .Mealcards-container {
+    padding: 20px 16px 50px;
+  }
+}
